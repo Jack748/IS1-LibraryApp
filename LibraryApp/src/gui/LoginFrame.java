@@ -152,6 +152,8 @@ public class LoginFrame extends javax.swing.JFrame {
                     userForm.TFcity.setText(test.getCity()); 
                     userForm.TFfloor.setText(Integer.toString(test.getFloor())); 
                 }
+                file.LoadBooks(library);
+                userForm.showBookList();
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();
