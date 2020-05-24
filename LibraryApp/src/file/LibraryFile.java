@@ -60,7 +60,7 @@ public class LibraryFile {
                     for(c=0;c<library.books.size();c++){
                         book =(BookCopy) library.books.get(c);  
                         pw.write(book.getTitle()+ " " +book.getCategory() +" "+ book.getYear()+" "+book.getAuthor()+" "+
-                                book.getCondition()+" "+ book.getFormat());
+                                book.getCondition()+" "+ book.getFormat()+"\n");
                     }
 	            
 	        } catch (Exception e) {
@@ -73,6 +73,21 @@ public class LibraryFile {
 	              e2.printStackTrace();
 	           }
 	        }
+    }
+    
+    public void LoadBooks(Library library){
+        library.books.clear();
+            try{
+                Scanner s=new Scanner(new File("books.txt"));
+                int i, k, c, n=s.nextInt();
+                for(i=0;i<n;i++){
+                        library.addBook(s.next(), s.next(),Integer.parseInt(s.next()), s.next(),s.next(),s.next());                  
+                }
+                
+                
+            }catch(Exception e){
+                e.printStackTrace();
+            }
     }
     
     

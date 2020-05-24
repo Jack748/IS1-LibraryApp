@@ -117,6 +117,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 UserForm userForm =new UserForm ();
                 this.dispose();
                 userForm.setVisible(true);
+                
                 userForm.library = library;
                 userForm.file=file;
                 for(RegisteredUser test :library.users ){
@@ -129,6 +130,8 @@ public class LoginFrame extends javax.swing.JFrame {
                     userForm.TFcity.setText(test.getCity()); 
                     userForm.TFfloor.setText(Integer.toString(test.getFloor())); 
                 }
+                file.LoadBooks(library);
+                userForm.showBookList();
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();

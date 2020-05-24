@@ -18,6 +18,13 @@ public class UserForm extends javax.swing.JFrame {
     public UserForm() {
         initComponents();
     }
+    
+    void showBookList(){
+        int i;
+        ULbooks.removeAll();
+        for(i=0;i<library.books.size();i++)
+            ULbooks.add(library.books.get(i).getTitle());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
