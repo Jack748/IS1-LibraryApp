@@ -91,13 +91,17 @@
               </Group>
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ULbooks" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="ULbooks" min="-2" pref="148" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="BTlease" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="329" max="32767" attributes="0"/>
+              <EmptySpace pref="220" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,7 +113,10 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ULbooks" min="-2" pref="242" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="ULbooks" min="-2" pref="242" max="-2" attributes="0"/>
+                          <Component id="BTlease" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="LBwelcome" min="-2" pref="19" max="-2" attributes="0"/>
@@ -256,6 +263,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Books"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BTlease">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lease"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTleaseActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

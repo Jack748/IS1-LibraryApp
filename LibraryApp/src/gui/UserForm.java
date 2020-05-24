@@ -8,7 +8,8 @@ package gui;
 import file.LibraryFile;
 import model.Library;
 import model.RegisteredUser;
-
+import model.BookCopy;
+import model.Lease;
 
 public class UserForm extends javax.swing.JFrame {
     
@@ -50,6 +51,7 @@ public class UserForm extends javax.swing.JFrame {
         LBwelcome = new javax.swing.JLabel();
         ULbooks = new java.awt.List();
         jLabel19 = new javax.swing.JLabel();
+        BTlease = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,13 @@ public class UserForm extends javax.swing.JFrame {
         LBwelcome.setText("Welcome");
 
         jLabel19.setText("Books");
+
+        BTlease.setText("Lease");
+        BTlease.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTleaseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,11 +154,14 @@ public class UserForm extends javax.swing.JFrame {
                         .addComponent(LBwelcome)))
                 .addGap(74, 74, 74)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ULbooks, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ULbooks, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(BTlease))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel19)))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(220, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,7 +171,9 @@ public class UserForm extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ULbooks, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ULbooks, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTlease)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LBwelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,6 +221,14 @@ public class UserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TFnumberActionPerformed
 
+    private void BTleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTleaseActionPerformed
+        BookCopy copy = (BookCopy) library.books.get(ULbooks.getSelectedIndex());
+        RegisteredUser user = library.users.get(0);
+        System.out.println(user.getName());
+        System.out.println(copy.getTitle());
+        library.addLease(user,copy);
+    }//GEN-LAST:event_BTleaseActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,6 +266,7 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTlease;
     private javax.swing.JLabel LBwelcome;
     public javax.swing.JTextField TFcity;
     public javax.swing.JTextField TFfloor;

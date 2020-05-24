@@ -10,10 +10,12 @@ public class Library {
     public ArrayList<RegisteredUser> users;
     public ArrayList<Librarian> librarians;
     public ArrayList<Book> books;
+    public ArrayList<Lease> leases;
     public Library(){
         users = new ArrayList<RegisteredUser>();
         librarians = new ArrayList<Librarian>();
         books = new ArrayList<Book>();
+        leases = new ArrayList<Lease>(); 
     }
     
     public void addRegUser(String fname, String lname, String username, String password, String street, int number, int floor, String city){
@@ -37,6 +39,11 @@ public class Library {
            new_id =((BookCopy)books.get(books.size() - 1)).id + 1;
 
         books.add(new BookCopy(title,category,year,author,condition,format,new_id));
+    }
+    
+    public void addLease(RegisteredUser user, BookCopy copy){
+        leases.add(new Lease(user,copy));
+        System.out.println(leases.get(0));
     }
    
     
