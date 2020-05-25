@@ -17,6 +17,13 @@ public class GuestForm extends javax.swing.JFrame {
     public GuestForm() {
         initComponents();
     }
+    
+    void showBookList(){
+        int i;
+        ULbooks.removeAll();
+        for(i=0;i<library.books.size();i++)
+            ULbooks.add(library.books.get(i).getTitle());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -27,6 +34,12 @@ public class GuestForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ULbooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ULbooksActionPerformed(evt);
+            }
+        });
 
         jLabel19.setText("Books");
 
@@ -65,6 +78,10 @@ public class GuestForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void ULbooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ULbooksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ULbooksActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -97,6 +114,7 @@ public class GuestForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new GuestForm().setVisible(true);
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

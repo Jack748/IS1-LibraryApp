@@ -11,8 +11,8 @@ import model.RegisteredUser;
 
 public class LoginFrame extends javax.swing.JFrame {
 
-    public model.Library library;
-    public file.LibraryFile file;
+    public Library library;
+    public LibraryFile file;
     
     public LoginFrame() {
         initComponents();
@@ -165,6 +165,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 librarianForm.setVisible(true);
                 librarianForm.library = library;
                 librarianForm.file=file;
+                file.LoadBooks(library);
+                librarianForm.showBookList();
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();
@@ -180,12 +182,18 @@ public class LoginFrame extends javax.swing.JFrame {
         RegistrationForm registrationForm =new RegistrationForm ();
                 this.dispose();
                 registrationForm.setVisible(true);
+                registrationForm.library = this.library;
+                registrationForm.file = this.file;
     }//GEN-LAST:event_BTregisterActionPerformed
 
     private void BTguestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTguestActionPerformed
         GuestForm guestForm =new GuestForm ();
                 this.dispose();
                 guestForm.setVisible(true);
+                guestForm.library = library;
+                guestForm.file=file;
+                file.LoadBooks(library);
+                guestForm.showBookList();
     }//GEN-LAST:event_BTguestActionPerformed
 
     public void clearFields(){

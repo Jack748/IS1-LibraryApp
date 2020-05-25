@@ -59,9 +59,9 @@ public class RegistrationForm extends javax.swing.JFrame {
         TFpassword = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         registerUser_btn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         User_radiobt = new javax.swing.JRadioButton();
         Librarian_userbt = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,22 +100,16 @@ public class RegistrationForm extends javax.swing.JFrame {
             }
         });
 
-        User_radiobt.setText("User");
-        User_radiobt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                User_radiobtActionPerformed(evt);
-            }
-        });
+        jLabel6.setText("Street");
 
-        Librarian_userbt.setSelected(true);
+        User_radiobt.setText("User");
+
         Librarian_userbt.setText("Librarian");
         Librarian_userbt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Librarian_userbtActionPerformed(evt);
             }
         });
-
-        jLabel6.setText("Street");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,11 +153,13 @@ public class RegistrationForm extends javax.swing.JFrame {
                                                     .addComponent(jLabel8)
                                                     .addComponent(jLabel9)))))
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(Librarian_userbt)
-                                            .addComponent(User_radiobt))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(registerUser_btn)))
+                                            .addComponent(Librarian_userbt, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(User_radiobt)
+                                                .addGap(20, 20, 20)
+                                                .addComponent(registerUser_btn)))))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(28, 28, 28)
@@ -204,17 +200,13 @@ public class RegistrationForm extends javax.swing.JFrame {
                     .addComponent(TFpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(TFfloor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(registerUser_btn)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(User_radiobt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Librarian_userbt)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerUser_btn)
+                    .addComponent(User_radiobt))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Librarian_userbt)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,24 +222,21 @@ public class RegistrationForm extends javax.swing.JFrame {
 
     private void registerUser_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUser_btnActionPerformed
 
-        if(User_radiobt.isSelected())
+        if(User_radiobt.isSelected()){
             library.addRegUser(TFfname.getText(), TFlastname.getText(),TFusername.getText(), TFpassword.getText(), TFstreet.getText(), Integer.parseInt(TFnumber.getText()), Integer.parseInt(TFfloor.getText()), TFcity.getText());
-         else
+            file.saveUsers(library);
+        }
+        else{
             library.addLibrarian(TFfname.getText(), TFlastname.getText(),TFusername.getText(), TFpassword.getText(), TFstreet.getText(), Integer.parseInt(TFnumber.getText()), Integer.parseInt(TFfloor.getText()), TFcity.getText());
-        
-        file.saveUsers(library);
-        file.saveLibrarians(library);
-        
+            file.saveLibrarians(library);
+        }
+                
         clearFields();
     }//GEN-LAST:event_registerUser_btnActionPerformed
 
     private void Librarian_userbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Librarian_userbtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Librarian_userbtActionPerformed
-
-    private void User_radiobtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_User_radiobtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_User_radiobtActionPerformed
 
     /**
      * @param args the command line arguments

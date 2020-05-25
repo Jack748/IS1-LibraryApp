@@ -16,6 +16,13 @@ public class LibrarianForm extends javax.swing.JFrame {
     public LibrarianForm() {
         initComponents();
     }
+    
+    void showBookList(){
+        int i;
+        ULbooks.removeAll();
+        for(i=0;i<library.books.size();i++)
+            ULbooks.add(library.books.get(i).getTitle());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -189,7 +196,7 @@ public class LibrarianForm extends javax.swing.JFrame {
 
     private void BTreg_bookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTreg_bookActionPerformed
         library.addBook(TFtitle.getText(),TFcategory.getText(),Integer.parseInt(TFyear.getText()),TFauthor.getText(),CBcondition.getSelectedItem().toString(),CBformat.getSelectedItem().toString() );
-        showBooksList();
+        showBookList();
     }//GEN-LAST:event_BTreg_bookActionPerformed
 
     private void BTbooksaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTbooksaveActionPerformed
@@ -230,12 +237,6 @@ public class LibrarianForm extends javax.swing.JFrame {
         });
     }
     
-    void showBooksList(){
-        int i;
-        ULbooks.removeAll();
-        for(i=0;i<library.books.size();i++)
-            ULbooks.add(library.books.get(i).getTitle());
-    }
     
     
     

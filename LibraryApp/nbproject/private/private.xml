@@ -3,14 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/LibrarianForm.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/LibraryForm.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/GuestForm.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/UserForm.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/model/BookCopy.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/RegistrationForm.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/model/Guest.java</file>
-            <file>file:/C:/Users/Giacomo/Desktop/IS1/IS1-LibraryApp-master/LibraryApp/src/gui/LoginFrame.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/gui/LibraryForm.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/model/Librarian.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/model/Library.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/gui/UserForm.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/gui/LoginFrame.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/gui/RegistrationForm.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/model/RegisteredUser.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/gui/LibrarianForm.java</file>
+            <file>file:/C:/Users/Giacomo/Desktop/IS1-LibraryApp-NUOVO/LibraryApp/src/libraryapp/LibraryApp.java</file>
         </group>
     </open-files>
 </project-private>

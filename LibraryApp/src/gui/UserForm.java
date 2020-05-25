@@ -92,6 +92,12 @@ public class UserForm extends javax.swing.JFrame {
 
         LBwelcome.setText("Welcome");
 
+        ULbooks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ULbooksActionPerformed(evt);
+            }
+        });
+
         jLabel19.setText("Books");
 
         BTlease.setText("Lease");
@@ -228,6 +234,10 @@ public class UserForm extends javax.swing.JFrame {
         System.out.println(copy.getTitle());
         library.addLease(user,copy);
     }//GEN-LAST:event_BTleaseActionPerformed
+
+    private void ULbooksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ULbooksActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ULbooksActionPerformed
 
     /**
      * @param args the command line arguments
