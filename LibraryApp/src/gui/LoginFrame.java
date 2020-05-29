@@ -142,16 +142,6 @@ public class LoginFrame extends javax.swing.JFrame {
                 userForm.setVisible(true);
                 userForm.library = library;
                 userForm.file=file;
-                for(RegisteredUser test :library.users ){
-                    userForm.TFfname.setText(test.getName()); 
-                    userForm.TFlastname.setText(test.getLname()); 
-                    userForm.TFusername.setText(test.getUsername()); 
-                    userForm.TFpassword.setText(test.getPassword());
-                    userForm.TFstreet.setText(test.getStreet()); 
-                    userForm.TFnumber.setText(Integer.toString(test.getNumber())); 
-                    userForm.TFcity.setText(test.getCity()); 
-                    userForm.TFfloor.setText(Integer.toString(test.getFloor())); 
-                }
                 file.LoadBooks(library);
                 userForm.showBookList();
             }else{ 

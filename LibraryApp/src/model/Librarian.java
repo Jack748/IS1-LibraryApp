@@ -1,8 +1,5 @@
 package model;
 
-
-import model.Address;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -32,6 +29,10 @@ public class Librarian {
     
     public String getName(){
         return(firstName+" "+lastName);
+    }
+    
+    public String getLname(){
+        return lastName;
     }
       
     public String getUsername(){

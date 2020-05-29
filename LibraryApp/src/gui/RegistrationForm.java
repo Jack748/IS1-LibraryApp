@@ -223,10 +223,12 @@ public class RegistrationForm extends javax.swing.JFrame {
     private void registerUser_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerUser_btnActionPerformed
 
         if(User_radiobt.isSelected()){
+            file.loadUsers(library);
             library.addRegUser(TFfname.getText(), TFlastname.getText(),TFusername.getText(), TFpassword.getText(), TFstreet.getText(), Integer.parseInt(TFnumber.getText()), Integer.parseInt(TFfloor.getText()), TFcity.getText());
             file.saveUsers(library);
         }
         else{
+            file.loadLibrarians(library);
             library.addLibrarian(TFfname.getText(), TFlastname.getText(),TFusername.getText(), TFpassword.getText(), TFstreet.getText(), Integer.parseInt(TFnumber.getText()), Integer.parseInt(TFfloor.getText()), TFcity.getText());
             file.saveLibrarians(library);
         }

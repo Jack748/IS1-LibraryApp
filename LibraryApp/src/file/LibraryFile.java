@@ -120,14 +120,29 @@ public class LibraryFile {
 	        }
     }
     
-    public void loadFromFile(Library library){
+    public void loadUsers(Library library){
             library.users.clear();
             try{
-                Scanner s=new Scanner(new File("Library.text"));
-                int i, k, c, n=s.nextInt();
+                Scanner s=new Scanner(new File("users.txt"));
+                int i, k, n=s.nextInt();
                 for(i=0;i<n;i++){
-                    c=s.nextInt();
                         library.addRegUser(s.next(), s.next(), s.next(), s.next(),s.next(),Integer.parseInt(s.next()),Integer.parseInt(s.next()),s.next());                  
+                }
+                
+                
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+    }
+    
+    
+    public void loadLibrarians(Library library){
+            library.librarians.clear();
+            try{
+                Scanner s=new Scanner(new File("librarians.txt"));
+                int i, k, n=s.nextInt();
+                for(i=0;i<n;i++){
+                        library.addLibrarian(s.next(), s.next(), s.next(), s.next(),s.next(),Integer.parseInt(s.next()),Integer.parseInt(s.next()),s.next());                  
                 }
                 
                 

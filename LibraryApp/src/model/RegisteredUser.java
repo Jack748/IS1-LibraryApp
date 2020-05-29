@@ -29,7 +29,7 @@ public class RegisteredUser{
     }
     
     public String getName(){
-        return firstName;
+        return(firstName+" "+lastName);
     }
     
     public String getLname(){
