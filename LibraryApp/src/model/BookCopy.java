@@ -30,5 +30,9 @@ public class BookCopy extends Book{
     public String getCondition(){
         return condition;
     }
+    
+    public int getId(){
+        return id;
+    }
             
 }

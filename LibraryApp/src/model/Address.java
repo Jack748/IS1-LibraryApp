@@ -24,4 +24,11 @@ public class Address {
         this.city=city;
     }
     
+    public void Update(String street, int number, int floor, String city){
+        this.street=street;
+        this.number=number;
+        this.floor=floor;
+        this.city=city;
+    }
+    
 }

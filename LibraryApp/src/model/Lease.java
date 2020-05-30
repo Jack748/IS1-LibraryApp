@@ -20,6 +20,22 @@ public class Lease {
         this.user = user;
         this.copy = copy;
         this.startlease = new Date();
-        String state = "active";
+        state = "active";
+    }
+    
+    public String getUsername(){
+        return user.getUsername();
+    }
+    
+    public String getTitle(){
+        return copy.getTitle();
+    }
+    
+    public Date getDate(){
+        return startlease;
+    }
+    
+    public String getState(){
+        return state;
     }
 }

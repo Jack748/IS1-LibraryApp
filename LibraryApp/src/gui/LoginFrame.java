@@ -142,8 +142,10 @@ public class LoginFrame extends javax.swing.JFrame {
                 userForm.setVisible(true);
                 userForm.library = library;
                 userForm.file=file;
-                file.LoadBooks(library);
-                userForm.showBookList();
+                userForm.file.LoadBooks(library);
+                userForm.LBL_username.setText(library.logged.getUsername());
+                userForm.LBLnum_books.setText(Integer.toString(library.books.size()));
+                
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();
@@ -155,8 +157,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 librarianForm.setVisible(true);
                 librarianForm.library = library;
                 librarianForm.file=file;
-                file.LoadBooks(library);
-                librarianForm.showBookList();
+                
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
                 clearFields();

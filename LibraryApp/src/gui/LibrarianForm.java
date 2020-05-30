@@ -73,7 +73,7 @@ public class LibrarianForm extends javax.swing.JFrame {
             }
         });
 
-        CBcondition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New", "Very Good", "Good", "Fair", "Poor" }));
+        CBcondition.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New", "Perfect", "Good", "Fair", "Poor" }));
 
         CBformat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ebook", "Light Skin", "Hard Skin", "Bag Book", "Article", "Journal" }));
 

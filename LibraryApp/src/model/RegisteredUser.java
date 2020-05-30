@@ -29,7 +29,7 @@ public class RegisteredUser{
     }
     
     public String getName(){
-        return(firstName+" "+lastName);
+        return(firstName);
     }
     
     public String getLname(){
@@ -57,5 +57,13 @@ public class RegisteredUser{
     }
     public int getFloor(){
         return(address.floor);
+    }
+    
+    public void UpdateProfile(String firstName, String lastName, String username, String password, String street, int number, int floor, String city){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.username = username;
+        this.password = password;
+        this.address.Update(street, number, floor, city);
     }
 }

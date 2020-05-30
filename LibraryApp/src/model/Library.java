@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Library {
     public ArrayList<RegisteredUser> users;
+    public RegisteredUser logged;
     public ArrayList<Librarian> librarians;
     public ArrayList<Book> books;
     public ArrayList<Lease> leases;
@@ -43,7 +44,7 @@ public class Library {
     
     public void addLease(RegisteredUser user, BookCopy copy){
         leases.add(new Lease(user,copy));
-        System.out.println(leases.get(0));
+        
     }
    
     

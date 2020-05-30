@@ -8,6 +8,8 @@ import model.Library;
 import model.RegisteredUser;
 import model.Librarian;
 import model.BookCopy;
+import model.BookCopy;
+import model.Lease;
 /**
  *
  * @author ludov
@@ -44,6 +46,36 @@ public class LibraryFile {
 	           }
 	        }
     }
+    
+    public void saveLeases(Library library){
+        int i;
+                FileWriter file_new = null;
+	        PrintWriter pw = null;
+	        try
+	        {
+	            file_new = new FileWriter("leases.txt");
+	            pw = new PrintWriter(file_new);
+	            int c;
+                    pw.write(library.leases.size()+"\n");
+                    Lease lease;
+
+                    for(c=0;c<library.leases.size();c++){
+                        lease =(Lease) library.leases.get(c);  
+                        pw.write(lease.getUsername()+" "+lease.getTitle()+" "+lease.getDate()+" "+lease.getState()+"\n");
+                    }
+	            
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != file_new)
+	              file_new.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
+    }
+    
     
     public void saveBooks(Library library){
                 int i;
@@ -153,16 +185,15 @@ public class LibraryFile {
     
     public boolean loginUser(Library library,String username, String password){
             try{
-                Library check = new Library();
                 Scanner s=new Scanner(new File("users.txt"));
                 int i, k, c, n=s.nextInt();
                 for(i=0;i<n;i++){
-                    check.addRegUser(s.next(), s.next(), s.next(), s.next(),s.next(),Integer.parseInt(s.next()),Integer.parseInt(s.next()),s.next());                  
+                    library.addRegUser(s.next(), s.next(), s.next(), s.next(),s.next(),Integer.parseInt(s.next()),Integer.parseInt(s.next()),s.next());                  
                 }
-                for(RegisteredUser test :check.users ){
+                for(RegisteredUser test :library.users ){
                     System.out.println(test.getUsername()+" "+test.getPassword());
                     if(test.getUsername().equals(username) && test.getPassword().equals(password)){
-                        library.users.add(test);
+                        library.logged = test;
                         return true;
                     }
                 }
