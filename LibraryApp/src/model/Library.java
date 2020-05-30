@@ -1,6 +1,8 @@
 package model;
 
 
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 /**
  *
@@ -42,9 +44,42 @@ public class Library {
         books.add(new BookCopy(title,category,year,author,condition,format,new_id));
     }
     
-    public void addLease(RegisteredUser user, BookCopy copy){
-        leases.add(new Lease(user,copy));
-        
+    public void addLease(RegisteredUser user, BookCopy copy,LocalDate start,LocalDate end){
+        leases.add(new Lease(user,copy,start,end));       
+    }
+    
+    public RegisteredUser findUser(String username){
+        int c;
+        RegisteredUser test;
+        for(c=0;c< users.size();c++){
+            test = users.get(c);
+            if(test.getUsername() == username)
+                return test;
+        }
+        return null;
+    }
+    
+    public BookCopy findBook(int bookid){
+        int c;
+        BookCopy test;
+        for(c=0;c< books.size();c++){
+            test = (BookCopy) books.get(c);
+            if(test.getId() == bookid)
+                return test;
+        }
+        return null;
+    }
+    
+    public boolean BookAvaible(BookCopy copy){
+        int c;
+        Lease test;
+        for(c=0;c<leases.size();c++){
+            test = leases.get(c);
+            if(test.getState().equals("active")&& test.getIdBook() == copy.getId() ){
+                return false;
+            }
+        }
+        return true;
     }
    
     

@@ -201,11 +201,13 @@ public class CatalogForm extends javax.swing.JFrame {
     private void BTleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTleaseActionPerformed
         BookCopy copy = (BookCopy) library.books.get(ULbooks.getSelectedIndex());
         RegisteredUser user = library.logged;
-        library.addLease(user,copy);
+        System.out.println(user.getName());
+        library.addLease(user,copy,null,null);
         file.saveLeases(library);
     }//GEN-LAST:event_BTleaseActionPerformed
 
     private void ULbooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ULbooksMouseClicked
+        file.LoadLeases(library);
         BookCopy copy = (BookCopy) library.books.get(ULbooks.getSelectedIndex());
         TFtitle.setText(copy.getTitle());
         TFcategory.setText(copy.getCategory());
@@ -213,8 +215,7 @@ public class CatalogForm extends javax.swing.JFrame {
         TFauthor.setText(copy.getAuthor());
         TFcondition.setText(copy.getCondition());
         TFformat.setText(copy.getFormat());
-        
-        
+        TFstate.setText(Boolean.toString(library.BookAvaible(copy)));     
     }//GEN-LAST:event_ULbooksMouseClicked
 
     private void TFtitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFtitleActionPerformed

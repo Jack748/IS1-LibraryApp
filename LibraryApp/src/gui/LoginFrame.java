@@ -143,6 +143,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 userForm.library = library;
                 userForm.file=file;
                 userForm.file.LoadBooks(library);
+                userForm.file.LoadLeases(library);
                 userForm.LBL_username.setText(library.logged.getUsername());
                 userForm.LBLnum_books.setText(Integer.toString(library.books.size()));
                 

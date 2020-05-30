@@ -61,7 +61,7 @@ public class LibraryFile {
 
                     for(c=0;c<library.leases.size();c++){
                         lease =(Lease) library.leases.get(c);  
-                        pw.write(lease.getUsername()+" "+lease.getTitle()+" "+lease.getDate()+" "+lease.getState()+"\n");
+                        pw.write(lease.getUsername()+" "+Integer.toString(lease.getIdBook())+" "+lease.getDate()+" "+lease.getState()+"\n");
                     }
 	            
 	        } catch (Exception e) {
@@ -121,6 +121,28 @@ public class LibraryFile {
                 e.printStackTrace();
             }
     }
+    
+    public void LoadLeases(Library library){
+        library.leases.clear();
+            try{
+                RegisteredUser user;
+                BookCopy copy;
+                Scanner s=new Scanner(new File("leases.txt"));
+                if(!s.hasNextInt())
+                    return;
+                int i, k, c, n=s.nextInt();
+                for(i=0;i<n;i++){
+                        user = library.findUser(s.next());
+                        copy = library.findBook(Integer.parseInt(s.next()));
+                        library.addLease(user,copy,null,null);                  
+                }
+                
+                
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+    }
+    
     
     
     public void saveLibrarians(Library library){
