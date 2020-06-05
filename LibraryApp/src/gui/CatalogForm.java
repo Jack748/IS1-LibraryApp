@@ -6,6 +6,7 @@
 package gui;
 
 import file.LibraryFile;
+import javax.swing.JOptionPane;
 import model.Library;
 import model.RegisteredUser;
 import model.BookCopy;
@@ -49,6 +50,12 @@ public class CatalogForm extends javax.swing.JFrame {
         TFformat = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         TFstate = new javax.swing.JTextField();
+        menu_main = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menu_update_info = new javax.swing.JMenuItem();
+        menu_your_leases = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -105,6 +112,40 @@ public class CatalogForm extends javax.swing.JFrame {
         jLabel1.setText("State");
 
         TFstate.setEditable(false);
+
+        jMenu1.setText("Personal");
+
+        menu_update_info.setText("Update Info");
+        menu_update_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_update_infoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_update_info);
+
+        menu_your_leases.setText("Your Leases");
+        menu_your_leases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_your_leasesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_your_leases);
+
+        menu_main.add(jMenu1);
+
+        jMenu2.setText("Library");
+
+        jMenuItem3.setText("Catalog");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        menu_main.add(jMenu2);
+
+        setJMenuBar(menu_main);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +229,7 @@ public class CatalogForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BTlease)
                         .addGap(38, 38, 38)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -199,11 +240,26 @@ public class CatalogForm extends javax.swing.JFrame {
     }//GEN-LAST:event_ULbooksActionPerformed
 
     private void BTleaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTleaseActionPerformed
-        BookCopy copy = (BookCopy) library.books.get(ULbooks.getSelectedIndex());
+        file.LoadLeases(library);
+        int YesOrNo = 1;
         RegisteredUser user = library.logged;
-        System.out.println(user.getName());
+        if(user == null)
+            JOptionPane.showMessageDialog(null,"Please login before do this action", "Login Required", JOptionPane.INFORMATION_MESSAGE);
+        BookCopy copy = (BookCopy) library.books.get(ULbooks.getSelectedIndex());
+        if(!library.BookAvaible(copy)){
+            YesOrNo = JOptionPane.showConfirmDialog(null,"Ops the book is already taken do you want to order it?","Book already taken", JOptionPane.YES_NO_OPTION);
+            if(YesOrNo == 0){
+                System.out.println(user.getUsername());
+                System.out.println(copy.getTitle());
+                library.addOrder(user,copy);
+                file.saveOrders(library); 
+            }
+                
+        } 
+        else{
         library.addLease(user,copy,null,null);
         file.saveLeases(library);
+        }
     }//GEN-LAST:event_BTleaseActionPerformed
 
     private void ULbooksMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ULbooksMouseClicked
@@ -215,12 +271,50 @@ public class CatalogForm extends javax.swing.JFrame {
         TFauthor.setText(copy.getAuthor());
         TFcondition.setText(copy.getCondition());
         TFformat.setText(copy.getFormat());
-        TFstate.setText(Boolean.toString(library.BookAvaible(copy)));     
+        if(library.BookAvaible(copy))
+            TFstate.setText("Avaible");
+        else
+            TFstate.setText("Taken"); 
     }//GEN-LAST:event_ULbooksMouseClicked
 
     private void TFtitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFtitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TFtitleActionPerformed
+
+    private void menu_update_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_update_infoActionPerformed
+        UpdatePersonalInfo updateForm =new UpdatePersonalInfo();
+        this.dispose();
+        updateForm.setVisible(true);
+        updateForm.library = library;
+        updateForm.file=file;
+        updateForm.TFfname.setText(library.logged.getName());
+        updateForm.TFlastname.setText(library.logged.getLname());
+        updateForm.TFusername.setText(library.logged.getUsername());
+        updateForm.TFpassword.setText(library.logged.getPassword());
+        updateForm.TFstreet.setText(library.logged.getStreet());
+        updateForm.TFnumber.setText(Integer.toString(library.logged.getNumber()));
+        updateForm.TFcity.setText(library.logged.getCity());
+    }//GEN-LAST:event_menu_update_infoActionPerformed
+
+    private void menu_your_leasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_your_leasesActionPerformed
+        MyLeasesForm myleasesForm =new MyLeasesForm();
+        this.dispose();
+        myleasesForm.setVisible(true);
+        myleasesForm.library = library;
+        myleasesForm.file=file;
+        file.LoadBooks(library);
+        myleasesForm.showLeaseList();
+    }//GEN-LAST:event_menu_your_leasesActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CatalogForm catalogForm =new CatalogForm();
+        this.dispose();
+        catalogForm.setVisible(true);
+        catalogForm.library = library;
+        catalogForm.file=file;
+        file.LoadBooks(library);
+        catalogForm.showBookList();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
  
     
@@ -282,5 +376,11 @@ public class CatalogForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuItem jMenuItem3;
+    public javax.swing.JMenuBar menu_main;
+    private javax.swing.JMenuItem menu_update_info;
+    private javax.swing.JMenuItem menu_your_leases;
     // End of variables declaration//GEN-END:variables
 }

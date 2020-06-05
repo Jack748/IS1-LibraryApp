@@ -10,6 +10,15 @@ package model;
  *
  * @author ludov
  */
-public class Admin {
+public class Admin extends User {
+    int id;
     
+    Admin(String firstName, String lastName, String username, String password, String street, int number, int floor, String city, int id){
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.username = username;
+        this.password = password;
+        this.id = id;
+        this.address=new Address(street, number, floor, city);  
+    }
 }

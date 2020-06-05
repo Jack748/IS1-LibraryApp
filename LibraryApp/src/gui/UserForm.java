@@ -34,6 +34,9 @@ public class UserForm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         LBLnum_books = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        LBLnum_leases = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_update_info = new javax.swing.JMenuItem();
@@ -60,6 +63,12 @@ public class UserForm extends javax.swing.JFrame {
 
         LBLnum_books.setText("  ");
 
+        jLabel4.setText("Lease ongoing!");
+
+        jLabel6.setText("You have");
+
+        LBLnum_leases.setText("  ");
+
         jMenu1.setText("Personal");
 
         menu_update_info.setText("Update Info");
@@ -71,6 +80,11 @@ public class UserForm extends javax.swing.JFrame {
         jMenu1.add(menu_update_info);
 
         menu_your_leases.setText("Your Leases");
+        menu_your_leases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_your_leasesActionPerformed(evt);
+            }
+        });
         jMenu1.add(menu_your_leases);
 
         jMenuBar1.add(jMenu1);
@@ -105,8 +119,14 @@ public class UserForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LBLnum_books)
                         .addGap(5, 5, 5)
-                        .addComponent(jLabel2)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LBLnum_leases)
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel4)))
+                .addContainerGap(123, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(177, Short.MAX_VALUE)
@@ -121,11 +141,18 @@ public class UserForm extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LBL_username, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(LBLnum_books))
-                .addContainerGap(128, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(LBLnum_books)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(LBLnum_leases)))
+                .addContainerGap(108, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(65, 65, 65)
@@ -148,8 +175,7 @@ public class UserForm extends javax.swing.JFrame {
                     updateForm.TFpassword.setText(library.logged.getPassword());
                     updateForm.TFstreet.setText(library.logged.getStreet()); 
                     updateForm.TFnumber.setText(Integer.toString(library.logged.getNumber())); 
-                    updateForm.TFcity.setText(library.logged.getCity()); 
-                    updateForm.TFfloor.setText(Integer.toString(library.logged.getFloor()));               
+                    updateForm.TFcity.setText(library.logged.getCity());              
     }//GEN-LAST:event_menu_update_infoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -161,6 +187,16 @@ public class UserForm extends javax.swing.JFrame {
        file.LoadBooks(library);
        catalogForm.showBookList();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menu_your_leasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_your_leasesActionPerformed
+       MyLeasesForm myleasesForm =new MyLeasesForm();
+       this.dispose();
+       myleasesForm.setVisible(true);
+       myleasesForm.library = library;
+       myleasesForm.file=file;
+       file.LoadBooks(library);
+       myleasesForm.showLeaseList();
+    }//GEN-LAST:event_menu_your_leasesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,10 +237,13 @@ public class UserForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel LBL_username;
     public javax.swing.JLabel LBLnum_books;
+    public javax.swing.JLabel LBLnum_leases;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

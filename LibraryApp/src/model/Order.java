@@ -1,17 +1,15 @@
 package model;
 
-import model.RegisteredUser;
-import model.BookCopy;
 public class Order {
     RegisteredUser user;
     BookCopy copy;
-    String state;
+    int n_queque;
     Library library;
     
-    Order(RegisteredUser user, BookCopy copy, String state){
+    Order(RegisteredUser user, BookCopy copy, int queque){
         this.user = user;
         this.copy = copy;
-        this.state = state;
+        this.n_queque= queque;
     }
     
     public RegisteredUser getUser(){
@@ -22,7 +20,7 @@ public class Order {
         return copy;
     }
     
-    public String getState(){
-        return state;
+    public int getNumberQueque(){
+        return n_queque;
     }
 }

@@ -7,9 +7,11 @@ import java.util.Scanner;
 import model.Library;
 import model.RegisteredUser;
 import model.Librarian;
-import model.BookCopy;
+import model.Order;
 import model.BookCopy;
 import model.Lease;
+import java.time.LocalDate;
+
 /**
  *
  * @author ludov
@@ -48,7 +50,7 @@ public class LibraryFile {
     }
     
     public void saveLeases(Library library){
-        int i;
+                int i;
                 FileWriter file_new = null;
 	        PrintWriter pw = null;
 	        try
@@ -60,8 +62,39 @@ public class LibraryFile {
                     Lease lease;
 
                     for(c=0;c<library.leases.size();c++){
-                        lease =(Lease) library.leases.get(c);  
+                        lease = library.leases.get(c);
+                        System.out.println(Integer.toString(c)+" "+Integer.toString(library.leases.size()));
                         pw.write(lease.getUsername()+" "+Integer.toString(lease.getIdBook())+" "+lease.getDate()+" "+lease.getState()+"\n");
+                    }
+	            
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != file_new)
+	              file_new.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
+    }
+    
+    
+    public void saveOrders(Library library){
+                int i;
+                FileWriter file_new = null;
+	        PrintWriter pw = null;
+	        try
+	        {
+	            file_new = new FileWriter("orders.txt");
+	            pw = new PrintWriter(file_new);
+	            int c;
+                    pw.write(library.orders.size()+"\n");
+                    Order order;
+
+                    for(c=0;c<library.orders.size();c++){
+                        order = library.orders.get(c);
+                        pw.write(order.getUser().getUsername()+" "+Integer.toString(order.getCopy().getId())+" "+order.getNumberQueque()+"\n");
                     }
 	            
 	        } catch (Exception e) {
@@ -127,6 +160,8 @@ public class LibraryFile {
             try{
                 RegisteredUser user;
                 BookCopy copy;
+                LocalDate date;
+                String state;
                 Scanner s=new Scanner(new File("leases.txt"));
                 if(!s.hasNextInt())
                     return;
@@ -134,6 +169,8 @@ public class LibraryFile {
                 for(i=0;i<n;i++){
                         user = library.findUser(s.next());
                         copy = library.findBook(Integer.parseInt(s.next()));
+                        date = LocalDate.parse(s.next());
+                        state = s.next();
                         library.addLease(user,copy,null,null);                  
                 }
                 

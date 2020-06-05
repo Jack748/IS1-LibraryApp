@@ -47,6 +47,12 @@ public class UpdatePersonalInfo extends javax.swing.JFrame {
         TFusername = new javax.swing.JTextField();
         TFpassword = new javax.swing.JTextField();
         update_btn = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        menu_update_info = new javax.swing.JMenuItem();
+        menu_your_leases = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,6 +93,40 @@ public class UpdatePersonalInfo extends javax.swing.JFrame {
                 update_btnActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("Personal");
+
+        menu_update_info.setText("Update Info");
+        menu_update_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_update_infoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_update_info);
+
+        menu_your_leases.setText("Your Leases");
+        menu_your_leases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_your_leasesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_your_leases);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Library");
+
+        jMenuItem3.setText("Catalog");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,7 +210,7 @@ public class UpdatePersonalInfo extends javax.swing.JFrame {
                         .addComponent(TFfloor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(update_btn)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -188,6 +228,41 @@ public class UpdatePersonalInfo extends javax.swing.JFrame {
         library.logged.UpdateProfile(TFfname.getText(), TFlastname.getText(),TFusername.getText(), TFpassword.getText(), TFstreet.getText(), Integer.parseInt(TFnumber.getText()), Integer.parseInt(TFfloor.getText()), TFcity.getText());
         file.saveUsers(library);    
     }//GEN-LAST:event_update_btnActionPerformed
+
+    private void menu_update_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_update_infoActionPerformed
+        UpdatePersonalInfo updateForm =new UpdatePersonalInfo();
+        this.dispose();
+        updateForm.setVisible(true);
+        updateForm.library = library;
+        updateForm.file=file;
+        updateForm.TFfname.setText(library.logged.getName());
+        updateForm.TFlastname.setText(library.logged.getLname());
+        updateForm.TFusername.setText(library.logged.getUsername());
+        updateForm.TFpassword.setText(library.logged.getPassword());
+        updateForm.TFstreet.setText(library.logged.getStreet());
+        updateForm.TFnumber.setText(Integer.toString(library.logged.getNumber()));
+        updateForm.TFcity.setText(library.logged.getCity());
+    }//GEN-LAST:event_menu_update_infoActionPerformed
+
+    private void menu_your_leasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_your_leasesActionPerformed
+        MyLeasesForm myleasesForm =new MyLeasesForm();
+        this.dispose();
+        myleasesForm.setVisible(true);
+        myleasesForm.library = library;
+        myleasesForm.file=file;
+        file.LoadBooks(library);
+        myleasesForm.showLeaseList();
+    }//GEN-LAST:event_menu_your_leasesActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CatalogForm catalogForm =new CatalogForm();
+        this.dispose();
+        catalogForm.setVisible(true);
+        catalogForm.library = library;
+        catalogForm.file=file;
+        file.LoadBooks(library);
+        catalogForm.showBookList();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +317,12 @@ public class UpdatePersonalInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem menu_update_info;
+    private javax.swing.JMenuItem menu_your_leases;
     private javax.swing.JButton update_btn;
     // End of variables declaration//GEN-END:variables
 }

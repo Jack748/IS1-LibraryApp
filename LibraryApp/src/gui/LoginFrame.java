@@ -146,6 +146,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 userForm.file.LoadLeases(library);
                 userForm.LBL_username.setText(library.logged.getUsername());
                 userForm.LBLnum_books.setText(Integer.toString(library.books.size()));
+                userForm.LBLnum_leases.setText(Integer.toString(library.MyLeases(library.logged).size()));
                 
             }else{ 
                 JOptionPane.showMessageDialog(null,"Login Failed", "Error", JOptionPane.INFORMATION_MESSAGE);
@@ -179,13 +180,15 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_BTregisterActionPerformed
 
     private void BTguestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTguestActionPerformed
-        GuestForm guestForm =new GuestForm ();
+        CatalogForm catalogform =new CatalogForm ();
                 this.dispose();
-                guestForm.setVisible(true);
-                guestForm.library = library;
-                guestForm.file=file;
+                catalogform.setVisible(true);
+                catalogform.menu_main.setVisible(false);
+                catalogform.library = library;
+                catalogform.file=file;
                 file.LoadBooks(library);
-                guestForm.showBookList();
+                catalogform.showBookList();
+                catalogform.library.logged = null;
     }//GEN-LAST:event_BTguestActionPerformed
 
     public void clearFields(){
